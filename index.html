@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Mariage - Michèle & Christophe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #2c3e50;
+            --bg: #fffdfa;
+            --accent: #f8f1e7;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg);
+            color: var(--dark);
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 80px 20px;
+            background: linear-gradient(rgba(255,253,250,0.7), rgba(255,253,250,0.7)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070') center/cover;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        h1, h2 { font-family: 'Playfair Display', serif; color: var(--gold); }
+        h1 { font-size: 3rem; margin-bottom: 10px; }
+        
+        .section { padding: 60px 20px; max-width: 800px; margin: 0 auto; }
+        .date-limit { color: #8d6e63; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Timer */
+        #countdown { display: flex; justify-content: center; gap: 15px; margin: 30px 0; flex-wrap: wrap; }
+        .time-segment { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); min-width: 70px; }
+        .number { display: block; font-size: 2rem; font-weight: bold; color: var(--gold); }
+        .label { font-size: 0.7rem; text-transform: uppercase; color: #888; }
+
+        /* Formulaire RSVP */
+        .rsvp-form { background: var(--accent); padding: 40px; border-radius: 15px; text-align: left; margin-top: 30px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-size: 1rem; }
+        
+        .btn-submit { 
+            background: var(--gold); color: white; border: none; padding: 15px 30px; 
+            font-size: 1rem; border-radius: 50px; cursor: pointer; width: 100%; transition: 0.3s;
+        }
+        .btn-submit:hover { background: #b8962d; transform: translateY(-2px); }
+
+        /* Cadeaux */
+        .gift-box { border: 2px dashed var(--gold); padding: 30px; border-radius: 15px; background: #fff; }
+
+        footer { padding: 40px; font-style: italic; color: #999; border-top: 1px solid var(--accent); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Michèle & Christophe</h1>
+        <p style="font-size: 1.4rem; letter-spacing: 4px;">19 SEPTEMBRE 2026</p>
+    </header>
+
+    <section class="section">
+        <h2>Le Compte à Rebours</h2>
+        <div id="countdown">
+            <div class="time-segment"><span class="number" id="days">00</span><span class="label">Jours</span></div>
+            <div class="time-segment"><span class="number" id="hours">00</span><span class="label">Heures</span></div>
+            <div class="time-segment"><span class="number" id="minutes">00</span><span class="label">Min</span></div>
+            <div class="time-segment"><span class="number" id="seconds">00</span><span class="label">Sec</span></div>
+        </div>
+    </section>
+
+    <section class="section" id="rsvp">
+        <h2>Confirmer votre présence</h2>
+        <p class="date-limit">Merci de répondre à votre présence</p>
+        
+        <form class="rsvp-form" action="https://formspree.io/f/mimietcricriforever@gmail.com" method="POST">
+            <div class="form-group">
+                <label for="name">Noms et Prénoms</label>
+                <input type="text" id="name" name="name" placeholder="Ex: Jean et Marie Dupont" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Votre adresse email</label>
+                <input type="email" id="email" name="email" placeholder="Ex: marie@exemple.com" required>
+            </div>
+            <div class="form-group">
+                <label for="presence">Serez-vous parmi nous ?</label>
+                <select id="presence" name="presence">
+                    <option value="oui">OUI, avec plaisir !</option>
+                    <option value="non">NON, malheureusement</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="guests">Nombre de personnes</label>
+                <input type="number" id="guests" name="guests" min="1" max="10" value="1">
+            </div>
+            <div class="form-group">
+                <label for="address">Votre adresse postale</label>
+                <textarea id="address" name="address" rows="3" placeholder="Votre adresse complète pour nos invitations..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Envoyer ma réponse</button>
+        </form>
+    </section>
+
+    <section class="section">
+        <h2>Cadeau de Mariage</h2>
+        <div class="gift-box">
+            <p>Votre présence est le plus beau des cadeaux.</p>
+            <p>Si vous souhaitez toutefois nous témoigner votre affection par un présent, une <strong>urne sera à votre disposition</strong> le jour J pour nous aider à réaliser notre futur voyage de noces.</p>
+            <p>✨ <em>Merci infiniment pour votre générosité.</em> ✨</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Nous avons hâte de célébrer cette journée avec vous.</p>
+    </footer>
+
+    <script>
+        const weddingDate = new Date("September 19, 2026 15:30:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = d;
+            document.getElementById("hours").innerHTML = h;
+            document.getElementById("minutes").innerHTML = m;
+            document.getElementById("seconds").innerHTML = s;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "C'est le grand jour !";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
